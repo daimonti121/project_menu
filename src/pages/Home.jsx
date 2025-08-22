@@ -1,5 +1,26 @@
-function Home () {
-    return <h2>Hello, from Home page</h2>
-} 
+import { useState, useEffect } from 'react';
+import { getAllCategoris } from '../api';
+import { Preloader } from './Preloader';
+import { CategoryList } from '../components/CatarogyList';
 
-export {Home}
+function Home() {
+    const [catalog, setCatalog] = useState([]);
+
+    useEffect(() => {
+        getAllCategoris().then((data) => {
+            setCatalog(data.categories);
+        });
+    }, []);
+
+    return (
+        <>
+            {!catalog.length ? (
+                <Preloader />
+            ) : (
+                <CategoryList catalog={catalog} />
+            )}
+        </>
+    );
+}
+
+export { Home };

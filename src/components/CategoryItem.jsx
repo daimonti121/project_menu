@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 
 function CategoryItem(props) {
     const {
-        idCategory,
+        // idCategory,
         strCategory,
         strCategoryDescription,
         strCategoryThumb,
-    } = props;
+    } = props;    
 
     return (
         <div className='card'>
